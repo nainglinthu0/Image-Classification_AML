@@ -6,8 +6,14 @@ import numpy as np
 
 app = Flask(__name__)
 
-# Load the trained model
-model = load_model("my_image_classifier.h5")
+import tensorflow as tf
+
+# Load the saved model
+model = tf.keras.models.load_model("my_image_classifier.h5")
+
+# Save in TensorFlow's 'SavedModel' format
+model.save("my_image_classifier.h5", save_format="tf")
+
 
 # Define labels
 label_names = {0: "Chihuahua", 1: "Muffin"}
